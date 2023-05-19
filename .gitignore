@@ -1,0 +1,19 @@
+# Fichiers d'environnement virtuel
+venv/
+env/
+*.pyc
+
+# Fichiers générés par l'IDE
+.vscode/
+.idea/
+
+# Fichiers de sortie et caches
+*.log
+*.csv
+*.xlsx
+*.db
+__pycache__/
+
+# Fichiers de configuration
+*.ini
+*.cfg
