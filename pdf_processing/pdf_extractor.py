@@ -19,17 +19,8 @@ def transform_output_to_report(output):
     for line in lines:
         line = line.strip()
 
-        # Vérifier si la ligne est un titre ou une question
-        if re.match(r"^\d+\. .*", line):
-            section = line.split(". ", 1)[1]
-            line = ""
-        elif line.startswith("a.") or re.match(r"^\d+\..*", line):
-            section = re.sub(r"^\w+\.\s*", "", line)
-            line = ""
-
-        # Ajouter la ligne au compte rendu uniquement si une section est déjà présente et la ligne n'est pas vide
-        if section and line and section not in section_dict:
-            report += f"{section} : {line}\n\n"
-            section_dict[section] = True
+        # Ajouter la ligne au compte rendu si elle n'est pas vide
+        if line:
+            report += f"{line}\n\n"
 
     return report.strip()
