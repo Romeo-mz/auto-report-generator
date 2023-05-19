@@ -24,3 +24,4 @@ def transform_output_to_report(output):
             report += f"{line}\n\n"
 
     return report.strip()
+
