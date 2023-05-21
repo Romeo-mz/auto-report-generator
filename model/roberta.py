@@ -1,19 +1,25 @@
-from transformers import pipeline
+from transformers import AutoModelForQuestionAnswering, AutoTokenizer, pipeline
+
 
 class RobertaSquad2:
     def __init__(self):
-        self.question_answerer = pipeline('question-answering', model='deepset/roberta-base-squad2', tokenizer='deepset/roberta-base-squad2')
+        self.model_name = "deepset/roberta-base-squad2"
 
-    def answer_question(self, context, question):
-        return self.question_answerer(question=question, context=context)
+        self.model = AutoModelForQuestionAnswering.from_pretrained(self.model_name)
+        self.tokenizer = AutoTokenizer.from_pretrained(self.model_name)
+        self.question_answerer = pipeline('question-answering', model=self.model, tokenizer=self.tokenizer)
 
-# Exemple d'utilisation
-context = "Tu es un étudiant en informatique qui réponds à un énoncé de TP image en python. Tu dois répondre à la question suivante:"
-question = "Coder un système d’affichage niveau de gris pour la luminosité et la saturation et couleur pour la teinte"
+    def answer_question(self, question, context):
+        nlp = pipeline('question-answering', model=self.model_name, tokenizer=self.tokenizer)
+        QA_input = {
+            'question': question,
+            'context': context
+        }
+        res = nlp(QA_input)
 
-roberta_squad2 = RobertaSquad2()
-answer = roberta_squad2.answer_question(context, question)
+        return res
+    
+    def prompt(self, prompt, context):
+        return self.answer_question(prompt, context)
 
-print("Question:", question)
-print("Réponse:", answer['answer'])
-print("Score de confiance:", answer['score'])
+
