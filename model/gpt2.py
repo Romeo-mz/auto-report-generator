@@ -5,10 +5,13 @@ class GPT2:
         self.generator = pipeline('text-generation', model='gpt2')
 
     def generate(self, prompt):
-        return self.generator(prompt, max_length=700, num_return_sequences=1)[0]['generated_text']
+        return self.generator(prompt, max_length=100, num_return_sequences=1, do_sample=True)[0]['generated_text']
     
     def generate_multiple(self, prompt, num_return_sequences=5):
-        return self.generator(prompt, max_length=700, num_return_sequences=num_return_sequences)
+        return self.generator(prompt, max_length=100, num_return_sequences=num_return_sequences)
     
-    def prompt(self, prompt):
-        return self.generate(prompt)
+    def prompt(self, prompt, context):
+        return self.answer_question(prompt, context)['answer']
+    
+    def answer_question(self, question, context):
+        return self.question_answerer(question = question, context = context)

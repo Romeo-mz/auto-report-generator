@@ -10,6 +10,7 @@ def main():
     
     gpt2 = GPT2()
 
-    print(gpt2.prompt("Bonjour, je suis un robot. Je suis capable de générer des rapports de TP à partir d'un énoncé."))
+    print(gpt2.answer_question(" Ecrit un programme qui affiche 'Hello World" , "Bonjour, tu dois répondre à la manière d'un etudiant en informatique à la question suivante: "))
+
 if __name__ == '__main__':
     main()
