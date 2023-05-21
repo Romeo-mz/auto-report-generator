@@ -33,7 +33,7 @@ Ce programme permet de lire et comprendre les instructions d'un compte rendu à 
 
 - [=============>] 100% : Extraction des données pertinentes à partir du PDF
 - [==========>___] 80% : Prétraitement du texte extrait pour nettoyer et normaliser le contenu
-- [              ] 0% : Utilisation de modèles de langage pour comprendre le sens des instructions
+- [===>          ] 30% : Utilisation de modèles de langage pour comprendre le sens des instructions
 - [              ] 0% : Génération automatique du compte rendu en utilisant des modèles de texte préalablement entraînés
 - [              ] 0% : Intégration d'un système de notation pour évaluer la qualité des résultats
 - [              ] 0% : Exportation du compte rendu dans différents formats (PDF, HTML, etc.)
